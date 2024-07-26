@@ -25,7 +25,7 @@ function loadLiveStatus(){
 			const keys = Object.keys(data);
 			var sno = 1;
 			var table = $('<table></table>').addClass("sortable table table-striped table-bordered dt-responsive nowrap'").attr("id", "statsTable");
-					var th = $( '<tr><th>SNO</th><th>Train No</th><th>From</th><th>To</th><th>Last Location</th>' ).appendTo(table);
+			var th = $( '<tr><th>SNO</th><th>Train No</th><th>From</th><th>To</th><th>Last Location</th>' ).appendTo(table);
 			for (let i = 0; i < keys.length; i++) {
 				const key = keys[i];
 				console.log(key, data[key]);
@@ -47,6 +47,7 @@ function loadLiveStatus(){
 						$('<td width="20%">' + start + '</td>').appendTo(tr);
 						$('<td width="20%">' + to + '</td>').appendTo(tr);
 						$('<td width="20%">' + last_stn + '</td>').appendTo(tr);
+						sno = sno + 1;
 					}
 				}
 			}
