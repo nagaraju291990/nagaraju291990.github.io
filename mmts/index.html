@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MMTS STATUS</title>
+
+	<script src="js/config.js"></script>
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/FileSaver.js"></script>
+	<!-- <script type="text/javascript" src="js/validation.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrap-5.3.1-dist/css/bootstrap.min.css" />
+	<script type="text/javascript" src="bootstrap-5.3.1-dist/js/bootstrap.bundle.min.js" ></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+	<div class="container" style="width: 100% !important;">
+		<div id="" class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12" style="display:none;margin-top: 0 !important;">
+
+			<form class="form-inline" id="upload" method="post" enctype="multipart/form-data">
+				<div class="btn-group col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 flex-wrap" role="group" aria-label="Basic example">
+					<label class="btn btn-outline-primary" for="my-file-selector" data-bs-title="Choose File" data-bs-placement="bottom" data-bs-toggle="tooltip">
+						<!--<input accept=".doc,.rtf,.docx,.pdf,text/plain" type="file" id="file" name="inputfile" multiple/>-->
+						<input accept="text/plain,.doc" type="file" id="file" name="inputfile" onchange="startRead(this)" multiple>
+					</label>
+					<!-- <button class="btn btn-outline-secondary">H</button>
+					<button class="btn btn-outline-secondary">H</button> -->
+					<select class="form-select" style="width: 20%;" id="discourseType" data-bs-title="Choose Annotation type" data-bs-placement="bottom" data-bs-toggle="tooltip">
+						<option value="anaphora">Anaphora</option>
+						<option value="connective">Connectives</option>
+					</select>
+					<select class="form-select" style="width: 15%;" id="anaphora_type" data-bs-title="Choose Relation type" data-bs-placement="bottom" data-bs-toggle="tooltip">
+						<!-- <option value="anaphora_c">Anaphora_C</option>
+						<option value="anaphora_rc">Anaphora_RC</option> -->
+					</select>
+					<button type="button" class="btn btn-outline-primary" id="clearBtn">Clear</button>
+				</div>
+			</form>
+			<div id="buttons" class="btn-group flex-wrap col-sm-9 col-md-9 col-lg-9 col-xl-9 col-xxl-9" role="group" aria-label="Toolbar">
+				<button type="button" id="submit" class="btn btn-secondary" data-bs-title="Use shortcut Ctrl+K to submit anaphora" data-bs-placement="bottom" data-bs-toggle="tooltip">Submit Anaphora</button>
+				<!-- <button type="button" id="undoButton" class="btn btn-danger">Undo</button>  -->
+				<button type="button" id="download" class="btn btn-secondary">Download Annotations</button>
+				<button type="button" id="viewXML" class="btn btn-secondary">View XML</button>
+				<!-- <button type="button" id="view" class="btn btn-secondary">View Annotations</button> -->
+				<button type="button" id="save" class="btn btn-primary" data-bs-title="Use shortcut Ctrl+S to save current session" data-bs-placement="bottom" data-bs-toggle="tooltip">Save</button>
+				<select style="width: 15%;" class="form-select" id="font-size" onchange="updateFontSize();">
+
+				</select>
+			</div>
+		</div>
+
+		<div class="row" style="height: 100%; overflow-y: auto; border: 1px solid #fff; padding: 10px;">
+			<div style="margin-top: 3%;height: 800px; overflow-y: auto;" class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9 col-xxl-9" id="statusTable">
+				
+			</div>
+		
+			
+		</div>
+	</div>
+</body>
+</html>
