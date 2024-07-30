@@ -77,3 +77,41 @@ body {
 	outline: 3px solid #000; /* Black outline for antecedents */
   }  
   
+
+
+
+  .title {
+    vertical-align: top;
+    /* padding: 2px;
+    padding: 6px; */
+	display: table-cell;
+	width: 10%;
+  }
+
+  div[id='gguidelines'] {
+    font-family:sans-serif,monospace;
+    -webkit-appearance: textarea;
+  }
+  .row {
+    /*margin-top :2px !important;*/
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  #title {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  .divrow {
+    display: table-row;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .srcdiv, .tgtdiv {
+    /* width: 20%; */
+    display: table-cell;
+     /*word-break:break-word;*/
+     word-break:break-word;
+  /*  word-break:break-all;/* to fit content without space in screen*/
+  }
+
