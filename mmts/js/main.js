@@ -3,6 +3,7 @@ $(document).ready(function(){
 	.forEach(tooltip => {
 	  new bootstrap.Tooltip(tooltip)
 	});
+	loadLiveStatus();
 	var intervalId = window.setInterval(function(){
 		// call your function here
 		loadLiveStatus();
@@ -13,7 +14,7 @@ $(document).ready(function(){
 function loadLiveStatus(){
 	console.log("iam jere");
 	$.ajax({
-		url: "https://mmts.geektheory.in/config/livetrain.php",
+		url: "http://mmts.geektheory.in/config/livetrain.php",
 		type: 'GET',
 		// data: formData,
 		async: false,
@@ -25,7 +26,7 @@ function loadLiveStatus(){
 			const keys = Object.keys(data);
 			var sno = 1;
 			var table = $('<table></table>').addClass("sortable table table-striped table-bordered dt-responsive nowrap'").attr("id", "statsTable");
-			var th = $( '<tr><th>SNO</th><th>Train No</th><th>From</th><th>To</th><th>Last Location</th>' ).appendTo(table);
+			var th = $( '<tr><th>SNO</th><th>Train No</th><th>From</th><th>To</th><th>Last Location</th><th>SD</th><th>AD</th>' ).appendTo(table);
 			for (let i = 0; i < keys.length; i++) {
 				const key = keys[i];
 				console.log(key, data[key]);
@@ -37,16 +38,31 @@ function loadLiveStatus(){
 					var last_stn =  data[train_no]["details"]["laststn"];
 					var start =  data[train_no]["details"]["startstnname"];
 					var to = data[train_no]["details"]["endstnname"];
+
+					
 					console.log(train_no);
 					console.log(last_stn);
 					
 					if(islive == "true") {
 						var tr = $( '<tr></tr>' ).appendTo(table);
-						$('<td width="10%">' + sno + '</td>').appendTo(tr);
-						$('<td width="10%">' + train_no + '</td>').appendTo(tr);
-						$('<td width="20%">' + start + '</td>').appendTo(tr);
-						$('<td width="20%">' + to + '</td>').appendTo(tr);
+						$('<td width="5%">' + sno + '</td>').appendTo(tr);
+						$('<td width="7%">' + train_no + '</td>').appendTo(tr);
+						$('<td width="10%">' + start + '</td>').appendTo(tr);
+						$('<td width="10%">' + to + '</td>').appendTo(tr);
 						$('<td width="20%">' + last_stn + '</td>').appendTo(tr);
+						var sd = '';
+						var ed = '';
+						if("StopsNumber" in data[train_no]["details"]) {
+							var no_of_stop = data[train_no]["details"]["StopsNumber"];
+							console.log(no_of_stop);
+							sd = data[train_no]["routes"][no_of_stop]["DT"];
+							ed = data[train_no]["routes"][no_of_stop]["EDT"];
+						} else {
+							sd = '-';
+							ed = '-';
+						}
+						$('<td width="5%">' + sd + '</td>').appendTo(tr);
+						$('<td width="5%">' + ed + '</td>').appendTo(tr);
 						sno = sno + 1;
 					}
 				}
