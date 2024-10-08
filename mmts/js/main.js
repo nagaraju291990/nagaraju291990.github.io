@@ -14,7 +14,8 @@ $(document).ready(function(){
 function loadLiveStatus(){
 	console.log("iam jere");
 	$.ajax({
-		url: "https://mmts.geektheory.in/config/livetrain.php",
+		// url: "https://mmts.geektheory.in/config/livetrain.php",
+		url: "https://mmts.trackmytrain.in/config/livetrain.php",
 		type: 'GET',
 		// data: formData,
 		async: false,
