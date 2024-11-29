@@ -3,13 +3,85 @@ $(document).ready(function(){
 	.forEach(tooltip => {
 	  new bootstrap.Tooltip(tooltip)
 	});
+	loadLivestatusfromDeviceInfo();
 	loadLiveStatus();
 	var intervalId = window.setInterval(function(){
 		// call your function here
+		loadLivestatusfromDeviceInfo();
 		loadLiveStatus();
-	  }, 30000);
+	  }, 5000);
 	
 });
+function loadLivestatusfromDeviceInfo(){
+	$.ajax({
+		url: "https://mmts.trackmytrain.in/config/devices/DevicesInfoAPI.php",
+		type: 'GET',
+		// data: formData,
+		async: false,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function (data) {
+			console.log(data);
+			const keys = data;
+			var sno = 1;
+			var table = $('<table></table>').addClass("sortable table table-striped table-bordered dt-responsive nowrap'").attr("id", "statsTable");
+			// var table = $('<div></div>').addClass('').css("border-collapse", "collapse").css("margin", "3px").attr('id', 'statsTable');
+			var th = $( '<tr><th>SNO</th><th>Train No</th><th>Train Name</th><th>Last Location</th>' ).appendTo(table);
+			// var th = $('<tr><th>SNO</th><th>Train No</th><th>From</th><th>To</th><th>Last Location</th><th>SD</th><th>AD</th>').addClass("divrow nodoubt");
+			for (let i = 0; i < keys.length; i++) {
+				const key = keys[i];
+				var train_no = key["trainNumber"];
+				if(key["currentStatus"] != "offline" ) {
+					
+					
+					var last_stn =  key["lastStn"];
+					var trainName = key["trainName"];
+					
+					console.log(train_no);
+					console.log(last_stn);
+					
+						
+						var tr = $( '<tr></tr>' ).appendTo(table);
+						$('<td width="1%">' + sno + '</td>').appendTo(tr);
+						$('<td width="7%">' + train_no + '</td>').appendTo(tr);
+						$('<td width="10%">' + trainName + '</td>').appendTo(tr);
+						$('<td width="20%">' + last_stn + '</td>').appendTo(tr);
+						
+						
+						// var coltgt = $('<div>' + sd + '</div>').addClass("title tgtdiv").appendTo(tr);
+						// var col_last_stn = $('<div>' + ed + '</div>').addClass("title savetitle").appendTo(tr);
+						// table.append(tr);
+						sno = sno + 1;
+					
+				}
+			}
+			$("#statusTable").html(table);
+
+		}, 
+		error:function  (jqXHR, exception) {
+			$("#loading").hide();
+			var msg = '';
+			if (jqXHR.status === 0) {
+					msg = 'Not connect.\n Verify Network.';
+			} else if (jqXHR.status == 404) {
+					msg = 'Requested page not found. [404]';
+			} else if (jqXHR.status == 500) {
+					msg = 'Internal Server Error [500].';
+			} else if (exception === 'parsererror') {
+					msg = 'Requested JSON parse failed.';
+			} else if (exception === 'timeout') {
+					msg = 'Time out error.';
+			} else if (exception === 'abort') {
+					msg = 'Ajax request aborted.';
+			} else {
+					msg = 'Uncaught Error.\n' + jqXHR.responseText;
+			}
+			alert("Error in File conversion "+msg);
+		}
+	});
+
+}
 
 function loadLiveStatus(){
 	console.log("iam jere");
@@ -83,7 +155,7 @@ function loadLiveStatus(){
 					}
 				}
 			}
-			$("#statusTable").html(table);
+			$("#statusTable").append(table);
 
 		}, 
 		error:function  (jqXHR, exception) {
