@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nagaraju Vuppala</title>
+
+<style>
+
+/* Base */
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+    margin: 0;
+    color: #222;
+    background: #fff;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    max-width: 60rem;
+    margin: auto;
+    /* padding: 5rem 1.2rem 2rem; */
+    padding: 3.5rem 1.2rem 1.2rem;
+}
+
+/* Headings */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    color: #1e40af;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+        margin-top: 1rem;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    padding: 0.8rem 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+nav a {
+    margin: 0 0.8rem;
+    text-decoration: none;
+    color: #1e40af;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Sections */
+section {
+    /* padding-top: 3rem; */
+        padding-top: 1.5rem;
+}
+
+/* Header (photo + intro) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-pic {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Highlight box */
+.highlight {
+    background: #f1f5ff;
+    padding: 1rem;
+    border-left: 0.25rem solid #1e40af;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Lists */
+ul {
+    padding-left: 1.2rem;
+}
+
+li {
+    margin-bottom: 0.4rem;
+}
+
+/* Projects */
+.project {
+    margin-bottom: 1.5rem;
+}
+
+/* Papers */
+.paper {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Links */
+a {
+    color: #2563eb;
+}
+
+/* 🔥 Mobile adjustments */
+@media (max-width: 768px) {
+
+    html {
+        font-size: 15px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-pic {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 0.3rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 5rem 1rem 2rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+
+<section id="home">
+
+<div class="header">
+    <div>
+        <h1>Nagaraju Vuppala</h1>
+        <p><strong>Senior Software Engineer — NLP & Language Technologies</strong></p>
+        <p>IIIT Hyderabad</p>
+    </div>
+
+    <img src="../images/Naga.jpg" alt="Profile Photo" class="profile-pic">
+</div>
+
+<p>
+    I work on multilingual Natural Language Processing systems for Indian languages including Telugu, Tamil, Hindi, and Sanskrit.
+    My work focuses on large-scale annotation pipelines, linguistic data workflows, shallow parsing systems, and morphological analysis.
+    I contribute to both engineering pipelines and research-driven NLP and Machine Learning modeling.
+</p>
+
+<div class="highlight">
+    <strong>Key Focus Areas:</strong><br>
+    Multilingual NLP • Morphological Analysis • Discourse Processing • Annotation Pipelines • Machine Learning • Low-resource Languages
+</div>
+
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+
+<p><strong>Senior Software Engineer</strong><br>
+IIIT Hyderabad (2023 – Present)</p>
+
+<ul>
+    <li>Lead multilingual NLP annotation workflows across large-scale research projects</li>
+    <li>Manage and mentor interns, guiding them in NLP tasks and research direction</li>
+    <li>Coordinate language experts for POS, chunking, morphology, NER, and discourse annotations</li>
+    <li>Design and manage parallel corpus pipelines</li>
+    <li>Develop unified shallow parsing pipelines integrating multiple linguistic layers</li>
+    <li>Work on modeling tasks such as clause boundary detection and nested span prediction</li>
+    <li>Build morphological analyzers for Telugu, Tamil, and Hindi</li>
+</ul>
+
+<p><strong>Sr. Software Engineer</strong><br>
+eBhasha Setu Language Services (2015 – 2022)</p>
+
+<ul>
+    <li>Worked on Machine Translation systems for Indian languages using Perl</li>
+    <li>Developed Python & Perl scripts for text processing and automation</li>
+    <li>Built APIs using JavaScript (AJAX, REST, JSON)</li>
+    <li>Developed internal tools using PHP, MySQL, jQuery</li>
+</ul>
+
+<p><strong>Software Engineer</strong><br>
+ValueLabs (2014 – 2015)</p>
+
+<ul>
+    <li>Perl programming and testing</li>
+    <li>Jira-based bug tracking</li>
+</ul>
+
+<p><strong>Programmer</strong><br>
+University of Hyderabad (2012 – 2014)</p>
+
+<ul>
+    <li>Developed NLP tools using Perl</li>
+    <li>Built CGI-based web interfaces</li>
+</ul>
+
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+
+<div class="project">
+<strong>Himangy</strong>
+<ul>
+<li>Managed parallel corpus creation and updates</li>
+<li>Coordinated annotation workflows</li>
+<li>Prepared reports and presentation slides</li>
+</ul>
+</div>
+
+<div class="project">
+<strong>Sanskrit–Tamil & Sanskrit–Telugu</strong>
+<ul>
+<li>Managed data flow and annotations</li>
+<li>Prepared technical reports and reviews</li>
+</ul>
+</div>
+
+<div class="project">
+<strong>Discourse MT</strong>
+<ul>
+<li>Handled annotation tasks (anaphora, clause, NER)</li>
+<li>Integrated NLP pipelines</li>
+<li>Presented progress in review meetings</li>
+</ul>
+</div>
+
+</section>
+
+<section id="research">
+<h2>Research</h2>
+
+<div class="paper">
+Family helps one another — Dravidian NLP suite<br>
+<strong>A Pm, P Dasari, V Nagaraju, P Krishnamurthy</strong> (2025)
+</div>
+
+<div class="paper">
+Sandhi splitting in Tamil and Telugu<br>
+<strong>P Dasari, MS Gupta, N Vuppala et al.</strong> (2025)
+</div>
+
+<div class="paper">
+Transformer-based Morphological Analyzer for Telugu<br>
+<strong>P Dasari et al.</strong> (2023)
+</div>
+
+<p>
+👉 <a href="https://scholar.google.com/citations?hl=en&user=6bYBzCAAAAAJ" target="_blank">
+Google Scholar Profile</a>
+</p>
+
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+
+<ul>
+<li><strong>Programming:</strong> Python, Perl, C, JavaScript, PHP</li>
+<li><strong>Web:</strong> jQuery, AJAX, REST, JSON</li>
+<li><strong>Systems:</strong> Linux / Unix</li>
+<li><strong>Machine Learning:</strong> Transformers, Seq2Seq, NLP models</li>
+<li><strong>NLP:</strong> Morphology, Parsing, Discourse</li>
+</ul>
+
+</section>
+
+<section id="education">
+<h2>Education</h2>
+
+<p><strong>B.Tech — Computer Science</strong><br>
+Avanthi Institute of Engineering and Technology (2008 – 2012)</p>
+
+<ul>
+<li>77% (Grade A)</li>
+</ul>
+
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+
+<p>Email: vpp.nagaraju1234@gmail.com</p>
+
+<p>
+<a href="https://www.linkedin.com/in/nagaraju-vuppala-88167a98/" target="_blank">
+LinkedIn Profile</a>
+</p>
+
+</section>
+
+</div>
+
+</body>
+</html>

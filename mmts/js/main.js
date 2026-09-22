@@ -1,9 +1,9 @@
 $(document).ready(function(){
-	document.querySelectorAll('[data-bs-toggle="tooltip"]')
-	.forEach(tooltip => {
-	  new bootstrap.Tooltip(tooltip)
-	});
-	loadLivestatusfromDeviceInfo();
+	// document.querySelectorAll('[data-bs-toggle="tooltip"]')
+	// .forEach(tooltip => {
+	//   new bootstrap.Tooltip(tooltip)
+	// });
+	// loadLivestatusfromDeviceInfo();
 	loadLiveStatus();
 	var intervalId = window.setInterval(function(){
 		// call your function here
@@ -14,7 +14,7 @@ $(document).ready(function(){
 });
 function loadLivestatusfromDeviceInfo(){
 	$.ajax({
-		url: "https://mmts.trackmytrain.in/config/devices/DevicesInfoAPI.php",
+		url: "https://suburban.trackmytrain.in/config/livetrain.php",
 		type: 'GET',
 		// data: formData,
 		async: false,
@@ -22,6 +22,7 @@ function loadLivestatusfromDeviceInfo(){
 		contentType: false,
 		processData: false,
 		success: function (data) {
+			return;
 			console.log(data);
 			const keys = data;
 			var sno = 1;
@@ -87,7 +88,7 @@ function loadLiveStatus(){
 	console.log("iam jere");
 	$.ajax({
 		// url: "https://mmts.geektheory.in/config/livetrain.php",
-		url: "https://mmts.trackmytrain.in/config/livetrain.php",
+		url: "https://suburban.trackmytrain.in/config/livetrain.php",
 		type: 'GET',
 		// data: formData,
 		async: false,
@@ -95,7 +96,7 @@ function loadLiveStatus(){
 		contentType: false,
 		processData: false,
 		success: function (data) {
-			console.log(data);
+			// console.log(data);
 			const keys = Object.keys(data);
 			var sno = 1;
 			var table = $('<table></table>').addClass("sortable table table-striped table-bordered dt-responsive nowrap'").attr("id", "statsTable");
@@ -104,27 +105,29 @@ function loadLiveStatus(){
 			// var th = $('<tr><th>SNO</th><th>Train No</th><th>From</th><th>To</th><th>Last Location</th><th>SD</th><th>AD</th>').addClass("divrow nodoubt");
 			for (let i = 0; i < keys.length; i++) {
 				const key = keys[i];
-				console.log(key, data[key]);
+				// console.log(key, data[key]);
 				var train_no = key;
-				if(data[train_no] != null && "details" in  data[train_no] ) {
-					var islive = data[train_no]["details"]["islive"];
-					console.log(islive);
+				var islive = data[train_no]["details"]["islive"];
+					// console.log("iam" +islive);
+
+				if(data[train_no] != null && "details" in  data[train_no] && islive == "true" ) {
+					// console.log("iam" +islive);
 					
 					var last_stn =  data[train_no]["details"]["laststn"];
 					var start =  data[train_no]["details"]["startstnname"];
 					var to = data[train_no]["details"]["endstnname"];
 
 					
-					console.log(train_no);
-					console.log(last_stn);
+					// console.log("iam" + train_no);
+					// console.log(last_stn);
 					
-					if(islive == "true") {
+					if(1) {
 						
 						var tr = $( '<tr></tr>' ).appendTo(table);
 						$('<td width="1%">' + sno + '</td>').appendTo(tr);
 						$('<td width="7%">' + train_no + '</td>').appendTo(tr);
-						$('<td width="10%">' + start + '</td>').appendTo(tr);
-						$('<td width="10%">' + to + '</td>').appendTo(tr);
+						$('<td width="5%">' + start + '</td>').appendTo(tr);
+						$('<td width="5%">' + to + '</td>').appendTo(tr);
 						$('<td width="20%">' + last_stn + '</td>').appendTo(tr);
 
 						// tr = $('<div></div>').addClass("divrow nodoubt");
@@ -155,7 +158,7 @@ function loadLiveStatus(){
 					}
 				}
 			}
-			$("#statusTable").append(table);
+			$("#statusTable").html(table);
 
 		}, 
 		error:function  (jqXHR, exception) {
